@@ -1,10 +1,13 @@
-import { main } from "framer-motion/client";
-import Image from "next/image";
+import HeroSection from "@/components/HeroSection";
+import PartnerLogos from "@/components/PartnerLogos";
+
 
 export default function Home() {
   return (
    <main>
-      Home page 
+      <HeroSection/>
+      <PartnerLogos/>
    </main>
   );
 }
+
