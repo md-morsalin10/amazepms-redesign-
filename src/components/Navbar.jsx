@@ -9,8 +9,8 @@ import ThemeToggle from '@/components/ThemeToggle';
 const navLinks = [
   { name: 'Home', href: '/', current: true },
   { name: 'About Us', href: '/about', hasDropdown: true },
-  { name: 'Services', href: '#services', hasDropdown: true },
-  { name: 'Recruitments', href: '#recruitments' },
+  { name: 'Services', href: '/services-page', hasDropdown: true },
+  { name: 'Recruitments', href: '/recruitments' },
   { name: 'Our Strength', href: '#strength' },
   { name: 'Gallery', href: '#gallery' },
   { name: 'Careers', href: '#careers' },
