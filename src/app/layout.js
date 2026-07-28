@@ -1,8 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import SmoothScroll from "@/components/SmoothScroll"; // SmoothScroll import করুন
+import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,13 +27,14 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
-        <SmoothScroll>
-          <Navbar />
-          <main className="flex-1">{children}
-          </main>
-          <Footer/>
-        </SmoothScroll>
+      <body className="bg-slate-50 text-slate-900 transition-colors duration-300 selection:bg-blue-600 selection:text-white dark:bg-slate-950 dark:text-slate-100">
+        <ThemeProvider>
+          <SmoothScroll>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

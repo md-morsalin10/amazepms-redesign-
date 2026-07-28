@@ -16,11 +16,11 @@ const partnerLogos = [
 
 export default function PartnerLogos() {
   return (
-    <section className="relative w-full bg-white py-12 border-y border-slate-100 overflow-hidden">
+    <section className="relative w-full bg-white py-12 border-y border-slate-100 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
       
       {/* Section Title */}
       <div className="max-w-7xl mx-auto px-6 mb-8 text-center sm:text-left">
-        <p className="text-sm font-semibold tracking-wider text-slate-500 uppercase">
+        <p className="text-sm font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
           Trusted by <span className="text-blue-600 font-bold">200+</span> valued partners around India
         </p>
       </div>
@@ -37,7 +37,7 @@ export default function PartnerLogos() {
           {partnerLogos.map((partner) => (
             <div
               key={partner.id}
-              className="group flex items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer min-w-[140px]"
+              className="group flex items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer min-w-[140px] dark:bg-slate-800 dark:border-slate-700"
             >
               <img
                 src={partner.logo}

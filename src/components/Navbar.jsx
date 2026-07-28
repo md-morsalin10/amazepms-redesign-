@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiChevronDown } from 'react-icons/hi2';
 import { FiMenu, FiX, FiArrowRight } from 'react-icons/fi';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
-  { name: 'Home', href: '#home', current: true },
-  { name: 'About Us', href: '#about', hasDropdown: true },
+  { name: 'Home', href: '/', current: true },
+  { name: 'About Us', href: '/about', hasDropdown: true },
   { name: 'Services', href: '#services', hasDropdown: true },
   { name: 'Recruitments', href: '#recruitments' },
   { name: 'Our Strength', href: '#strength' },
@@ -43,8 +44,8 @@ export default function Navbar() {
       <div
         className={`max-w-7xl mx-auto rounded-full px-6 py-3.5 flex items-center justify-between min-h-[72px] transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-xl border border-slate-300/80 shadow-2xl shadow-slate-900/10'
-            : 'bg-white/85 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5'
+            ? 'bg-white/95 backdrop-blur-xl border border-slate-300/80 shadow-2xl shadow-slate-900/10 dark:bg-slate-900/90 dark:border-slate-700 dark:shadow-slate-950/40'
+            : 'bg-white/85 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5 dark:bg-slate-900/80 dark:border-slate-700/80 dark:shadow-slate-950/20 dark:ring-slate-800'
         }`}
       >
         {/* 1. Logo Section */}
@@ -57,7 +58,7 @@ export default function Navbar() {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-2xl font-black text-slate-900 tracking-tight dark:text-white">
             AMAZE <span className="text-blue-600 font-light text-xl">PMSPL</span>
           </h1>
         </div>
@@ -70,8 +71,8 @@ export default function Navbar() {
               href={link.href}
               className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-1 ${
                 link.current
-                  ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80'
+                  ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:bg-blue-950/50 dark:border-blue-800'
+                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-blue-400'
               }`}
             >
               <span>{link.name}</span>
@@ -82,20 +83,26 @@ export default function Navbar() {
 
         {/* 3. CTA Button & Mobile Toggle */}
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
-            className="hidden sm:inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02]"
-          >
-            <span>Contact Us</span>
-            <FiArrowRight className="h-4 w-4" />
-          </a>
+          <div className="hidden sm:flex items-center gap-3">
+            <ThemeToggle />
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02]"
+            >
+              <span>Contact Us</span>
+              <FiArrowRight className="h-4 w-4" />
+            </a>
+          </div>
 
-          <button
+          <div className="flex items-center gap-2 xl:hidden">
+            <ThemeToggle />
+            <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden text-slate-800 p-2.5 rounded-full border border-slate-300 bg-slate-100 hover:bg-slate-200 transition"
+            className="text-slate-800 p-2.5 rounded-full border border-slate-300 bg-slate-100 hover:bg-slate-200 transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
           >
             {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
           </button>
+          </div>
         </div>
       </div>
 
@@ -106,7 +113,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            className="absolute top-full left-4 right-4 z-40 mt-3 rounded-3xl border border-slate-300 bg-white/98 p-6 shadow-2xl backdrop-blur-2xl xl:hidden"
+            className="absolute top-full left-4 right-4 z-40 mt-3 rounded-3xl border border-slate-300 bg-white/98 p-6 shadow-2xl backdrop-blur-2xl xl:hidden dark:border-slate-700 dark:bg-slate-900/95"
           >
             <nav className="space-y-2">
               {navLinks.map((link) => (
@@ -116,8 +123,8 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition ${
                     link.current
-                      ? 'text-blue-600 bg-blue-50 border border-blue-200'
-                      : 'text-slate-800 hover:bg-slate-100'
+                      ? 'text-blue-600 bg-blue-50 border border-blue-200 dark:bg-blue-950/50 dark:border-blue-800'
+                      : 'text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
                   }`}
                 >
                   <span>{link.name}</span>

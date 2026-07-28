@@ -12,7 +12,7 @@ const features = [
 
 export default function AboutUs() {
   return (
-    <section id="about" className="relative py-20 sm:py-28 bg-white overflow-hidden">
+    <section id="about" className="relative py-20 sm:py-28 bg-white overflow-hidden dark:bg-slate-900">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-blue-50/60 rounded-full blur-3xl -z-10 pointer-events-none" />
 
@@ -28,22 +28,22 @@ export default function AboutUs() {
             className="lg:col-span-7 space-y-6"
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-600 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-blue-600 text-xs font-bold uppercase tracking-wider dark:bg-blue-950/40 dark:border-blue-800/60">
               <HiShieldCheck className="h-4 w-4" />
               <span>Established Since 2001</span>
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight dark:text-white">
               About <span className="text-blue-600">Us</span>
             </h2>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              <strong className="text-slate-900 font-semibold">Amaze PMS Pvt Ltd (AMAZE)</strong> is a Property Management division of <strong className="text-slate-900 font-semibold">ACTION GROUP</strong> of Companies founded in the year 2001 by Mr. Subhani Abdul, a veteran from the Indian Navy, a Certified Security Practitioner, and a renowned name in the Service Industry.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal dark:text-slate-300">
+              <strong className="text-slate-900 font-semibold dark:text-white">Amaze PMS Pvt Ltd (AMAZE)</strong> is a Property Management division of <strong className="text-slate-900 font-semibold dark:text-white">ACTION GROUP</strong> of Companies founded in the year 2001 by Mr. Subhani Abdul, a veteran from the Indian Navy, a Certified Security Practitioner, and a renowned name in the Service Industry.
             </p>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed dark:text-slate-300">
               Amaze has its Head Quarters in Cyberabad, Telangana - INDIA, providing Property Management Solutions PAN INDIA, partnering with leading clientele with 15000+ strong strength of professionals. We specialize in offering comprehensive integrated Property Management Services such as Housekeeping, MEP (Mechanical, Electrical, Plumbing), Security, Pest Control, Gardening, STP & WTP, Parking, Swimming Pool Maintenance, and office support services.
             </p>
 
@@ -56,10 +56,10 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 hover:bg-blue-50/50 hover:border-blue-100 transition-all duration-300"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 hover:bg-blue-50/50 hover:border-blue-100 transition-all duration-300 dark:bg-slate-800/80 dark:border-slate-700 dark:hover:bg-blue-950/40 dark:hover:border-blue-800"
                 >
                   <HiCheckCircle className="h-6 w-6 text-blue-600 flex-shrink-0" />
-                  <span className="text-sm font-semibold text-slate-800">{feature}</span>
+                  <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">{feature}</span>
                 </motion.div>
               ))}
             </div>
@@ -91,7 +91,7 @@ export default function AboutUs() {
             <div className="relative w-full max-w-md sm:max-w-lg">
               
               {/* Back Card Image (Action Group Shield Logo Box) */}
-              <div className="w-[85%] sm:w-[80%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-blue-600 aspect-square flex items-center justify-center p-6 ml-auto">
+              <div className="w-[85%] sm:w-[80%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-blue-600 aspect-square flex items-center justify-center p-6 ml-auto dark:border-slate-800">
                 <img
                   src="https://www.amazepms.com/assets/about-ag.jpg" 
                   alt="Action Group Logo"
@@ -109,7 +109,7 @@ export default function AboutUs() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="absolute -bottom-8 left-0 w-[75%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white backdrop-blur-md"
+                className="absolute -bottom-8 left-0 w-[75%] sm:w-[70%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white backdrop-blur-md dark:border-slate-800 dark:bg-slate-800"
               >
                 <img
                   src="https://www.amazepms.com/assets/about-team.jpg" 
@@ -122,7 +122,7 @@ export default function AboutUs() {
               </motion.div>
 
               {/* Decorative Dot Pattern Background */}
-              <div className="absolute -top-6 -left-6 -z-10 text-slate-200 hidden sm:block">
+              <div className="absolute -top-6 -left-6 -z-10 text-slate-200 hidden sm:block dark:text-slate-700">
                 <svg width="100" height="100" fill="currentColor" viewBox="0 0 100 100">
                   <pattern id="dot-pattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
                     <circle cx="3" cy="3" r="2.5" />

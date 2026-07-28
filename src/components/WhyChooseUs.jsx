@@ -22,7 +22,7 @@ const staffWelfare =
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative py-20 bg-white border-t border-slate-100 overflow-hidden">
+    <section className="relative py-20 bg-white border-t border-slate-100 overflow-hidden dark:bg-slate-900 dark:border-slate-800">
       
       {/* Upper Main Section */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-20">
@@ -38,7 +38,7 @@ export default function WhyChooseUs() {
           >
             <div className="relative w-full max-w-md">
               {/* Main Background Image Card */}
-              <div className="w-[88%] rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 aspect-[4/5] flex items-center justify-center">
+              <div className="w-[88%] rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-slate-100 aspect-[4/5] flex items-center justify-center dark:border-slate-700 dark:bg-slate-800">
                 <img
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
                   alt="Professional Team"
@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="absolute -bottom-6 -right-2 sm:right-2 w-[65%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white p-1.5"
+                className="absolute -bottom-6 -right-2 sm:right-2 w-[65%] rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white p-1.5 dark:border-slate-800 dark:bg-slate-800"
               >
                 <img
                   src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80"
@@ -75,7 +75,7 @@ export default function WhyChooseUs() {
               <p className="text-xs font-bold tracking-widest text-blue-600 uppercase mb-2">
                 Our Service Benefits
               </p>
-              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight dark:text-white">
                 Why <span className="text-blue-600">Choose Us</span>
               </h2>
             </div>
@@ -91,10 +91,10 @@ export default function WhyChooseUs() {
                   transition={{ duration: 0.3, delay: index * 0.04 }}
                   className="flex items-start gap-3.5 group"
                 >
-                  <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200 mt-0.5 flex-shrink-0 shadow-sm">
+                  <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200 mt-0.5 flex-shrink-0 shadow-sm dark:bg-blue-950/40 dark:border-blue-800 dark:text-blue-400">
                     <HiOutlineSparkles className="h-4 w-4" />
                   </div>
-                  <p className="text-sm sm:text-base font-semibold text-slate-800 leading-snug">
+                  <p className="text-sm sm:text-base font-semibold text-slate-800 leading-snug dark:text-slate-200">
                     {benefit}
                   </p>
                 </motion.div>
@@ -106,12 +106,12 @@ export default function WhyChooseUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-6 p-4 rounded-2xl bg-blue-50/90 border border-blue-200 text-slate-900 text-xs sm:text-sm font-semibold leading-relaxed shadow-sm"
+                className="mt-6 p-4 rounded-2xl bg-blue-50/90 border border-blue-200 text-slate-900 text-xs sm:text-sm font-semibold leading-relaxed shadow-sm dark:bg-blue-950/40 dark:border-blue-800 dark:text-slate-100"
               >
-                <span className="text-blue-700 font-bold block mb-1">
+                <span className="text-blue-700 font-bold block mb-1 dark:text-blue-400">
                   🎁 {staffWelfare.split(':')[0]}:
                 </span>
-                <span className="text-slate-800 font-medium">
+                <span className="text-slate-800 font-medium dark:text-slate-300">
                   {staffWelfare.split(':')[1]}
                 </span>
               </motion.div>
