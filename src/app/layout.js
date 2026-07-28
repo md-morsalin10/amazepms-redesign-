@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll"; // SmoothScroll import করুন
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
         <SmoothScroll>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">{children}
+          </main>
+          <Footer/>
         </SmoothScroll>
       </body>
     </html>
