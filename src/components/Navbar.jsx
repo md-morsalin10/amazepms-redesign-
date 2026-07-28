@@ -2,23 +2,26 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiChevronDown } from 'react-icons/hi2';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { FiMenu, FiX, FiArrowRight } from 'react-icons/fi';
 import ThemeToggle from '@/components/ThemeToggle';
 
 const navLinks = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'About Us', href: '/about', hasDropdown: true },
-  { name: 'Services', href: '/services-page', hasDropdown: true },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Services', href: '/services-page' },
   { name: 'Recruitments', href: '/recruitments' },
-  { name: 'Our Strength', href: '#strength' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'Careers', href: '#careers' },
+  { name: 'Our Strength', href: '/our-strength' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Contact Us', href: '/contact' },
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Scroll detect korar jonno effect
   useEffect(() => {
@@ -42,14 +45,14 @@ export default function Navbar() {
     >
       {/* 🔮 Glassmorphic Navbar Container with Enhanced Border & Shadow */}
       <div
-        className={`max-w-7xl mx-auto rounded-full px-6 py-3.5 flex items-center justify-between min-h-[72px] transition-all duration-300 ${
+        className={`max-w-[90rem] mx-auto rounded-full px-5 lg:px-6 py-3.5 flex items-center justify-between min-h-[72px] transition-all duration-300 ${
           isScrolled
             ? 'bg-white/95 backdrop-blur-xl border border-slate-300/80 shadow-2xl shadow-slate-900/10 dark:bg-slate-900/90 dark:border-slate-700 dark:shadow-slate-950/40'
             : 'bg-white/85 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5 dark:bg-slate-900/80 dark:border-slate-700/80 dark:shadow-slate-950/20 dark:ring-slate-800'
         }`}
       >
         {/* 1. Logo Section */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <img
             src="https://www.amazepms.com/assets/logo.png"
             alt="Amaze PMSPL Logo"
@@ -58,50 +61,52 @@ export default function Navbar() {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <h1 className="text-2xl font-black text-slate-900 tracking-tight dark:text-white">
-            AMAZE <span className="text-blue-600 font-light text-xl">PMSPL</span>
+          <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight dark:text-white whitespace-nowrap">
+            AMAZE <span className="text-blue-600 font-light text-lg lg:text-xl">PMSPL</span>
           </h1>
         </div>
 
         {/* 2. Nav Items */}
-        <nav className="hidden xl:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`relative px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-1 ${
-                link.current
-                  ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:bg-blue-950/50 dark:border-blue-800'
-                  : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-blue-400'
-              }`}
-            >
-              <span>{link.name}</span>
-              {link.hasDropdown && <HiChevronDown className="h-4 w-4 text-slate-400" />}
-            </a>
-          ))}
+        <nav className="hidden xl:flex items-center justify-center gap-1 flex-1 px-4">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`relative px-3 py-1.5 xl:px-3.5 xl:py-2 rounded-full text-xs xl:text-sm font-semibold transition-all duration-300 flex items-center gap-1 whitespace-nowrap ${
+                  isActive
+                    ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:bg-blue-950/50 dark:border-blue-800'
+                    : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-blue-400 border border-transparent'
+                }`}
+              >
+                <span className="whitespace-nowrap">{link.name}</span>
+              </Link>
+            );
+          })}
         </nav>
 
         {/* 3. CTA Button & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0">
           <div className="hidden sm:flex items-center gap-3">
             <ThemeToggle />
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-6 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02]"
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-5 py-2 xl:px-6 xl:py-2.5 text-xs xl:text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02] whitespace-nowrap"
             >
-              <span>Contact Us</span>
+              <span className="whitespace-nowrap">Contact Us</span>
               <FiArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </div>
 
           <div className="flex items-center gap-2 xl:hidden">
             <ThemeToggle />
             <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-slate-800 p-2.5 rounded-full border border-slate-300 bg-slate-100 hover:bg-slate-200 transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
-          >
-            {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
-          </button>
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-slate-800 p-2.5 rounded-full border border-slate-300 bg-slate-100 hover:bg-slate-200 transition dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+            >
+              {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
       </div>
@@ -116,30 +121,32 @@ export default function Navbar() {
             className="absolute top-full left-4 right-4 z-40 mt-3 rounded-3xl border border-slate-300 bg-white/98 p-6 shadow-2xl backdrop-blur-2xl xl:hidden dark:border-slate-700 dark:bg-slate-900/95"
           >
             <nav className="space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition ${
-                    link.current
-                      ? 'text-blue-600 bg-blue-50 border border-blue-200 dark:bg-blue-950/50 dark:border-blue-800'
-                      : 'text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
-                  }`}
-                >
-                  <span>{link.name}</span>
-                  {link.hasDropdown && <HiChevronDown className="h-5 w-5 text-slate-400" />}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold transition whitespace-nowrap ${
+                      isActive
+                        ? 'text-blue-600 bg-blue-50 border border-blue-200 dark:bg-blue-950/50 dark:border-blue-800'
+                        : 'text-slate-800 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    <span className="whitespace-nowrap">{link.name}</span>
+                  </Link>
+                );
+              })}
               <div className="pt-4 border-t border-slate-200">
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-bold text-white shadow-lg"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-bold text-white shadow-lg whitespace-nowrap"
                 >
-                  <span>Contact Us</span>
+                  <span className="whitespace-nowrap">Contact Us</span>
                   <FiArrowRight className="h-5 w-5" />
-                </a>
+                </Link>
               </div>
             </nav>
           </motion.div>
