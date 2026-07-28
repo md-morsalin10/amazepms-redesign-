@@ -52,11 +52,19 @@ export default function ServicePartners() {
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/20 transition-all duration-300 group"
+                whileHover={{ y: -8, scale: 1.015 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-[0_10px_30px_rgba(59,130,246,0.25)] dark:hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] transition-all duration-300 group relative overflow-hidden hover:border-transparent"
               >
-                <div className="flex flex-col items-center text-center h-full">
-                  <div className="p-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                {/* Glowing Gradient Border Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl -z-10 blur-[2px] m-[-2px]" />
+                <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 rounded-3xl z-0 transition-colors duration-300" />
+                
+                {/* Hover Inner Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+
+                <div className="flex flex-col items-center text-center h-full relative z-10">
+                  <div className="p-5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 relative">
                     <Icon size={40} strokeWidth={1.5} />
                   </div>
                   

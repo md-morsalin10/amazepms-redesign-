@@ -118,9 +118,9 @@ export default function HeroSection() {
   const IconComponent = slide.icon;
 
   return (
-    <section className="relative w-full h-screen min-h-[700px] overflow-hidden text-white flex items-center justify-center">
+    <section className="relative w-full min-h-[85vh] lg:h-[calc(100vh-80px)] overflow-hidden text-white flex items-center justify-center">
       
-      {/* 🖼️ Full Background Image */}
+      {/* 📹 Background Video/Image Slider Setup */}
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
@@ -163,7 +163,7 @@ export default function HeroSection() {
       </div>
 
       {/* 📝 Main Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full pt-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
         <div className="max-w-2xl">
           
           <AnimatePresence mode="wait">
@@ -199,14 +199,11 @@ export default function HeroSection() {
                 
                 {/* Primary Action Button */}
                 <motion.a
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
                   href="#services"
-                  className="group relative overflow-hidden px-7 py-3.5 inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 transition-all duration-300"
+                  className="group relative overflow-hidden px-7 py-3.5 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-[length:200%_auto] hover:bg-right text-sm font-bold text-white shadow-lg shadow-blue-600/30 hover:shadow-[0_10px_30px_rgba(59,130,246,0.3)] transition-all duration-500 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-transform before:duration-700"
                 >
-                  {/* Subtle shine/glow effect on hover */}
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
-                  
                   <span className="relative z-10">Explore Service</span>
                   <FiArrowRight className="relative z-10 h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
                 </motion.a>

@@ -66,28 +66,35 @@ export default function SkillDevelopment() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -8, scale: 1.015 }}
                 className="relative group h-[420px]"
               >
-                <div className="absolute inset-0 bg-gradient-to-b opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 rounded-3xl blur-xl pointer-events-none ${domain.color}" />
+                <div className={`absolute inset-0 bg-gradient-to-b opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 transition-opacity duration-500 rounded-3xl blur-xl pointer-events-none ${domain.color}`} />
                 
-                <div className="relative h-full p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm group-hover:shadow-2xl transition-all duration-300 flex flex-col group-hover:border-slate-300 dark:group-hover:border-slate-700 overflow-hidden">
+                <div className="relative h-full p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm group-hover:shadow-[0_10px_30px_rgba(59,130,246,0.25)] dark:group-hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] transition-all duration-300 flex flex-col group-hover:border-transparent overflow-hidden">
                   
-                  <div className={`p-4 rounded-2xl w-fit mb-6 ${domain.bgLight} ${domain.textColor} transition-transform duration-300 group-hover:scale-110`}>
+                  {/* Glowing Gradient Border Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl -z-10 blur-[2px] m-[-2px]" />
+                  <div className="absolute inset-0 bg-white dark:bg-slate-900 rounded-3xl z-0 transition-colors duration-300" />
+                  
+                  {/* Hover Inner Glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+
+                  <div className={`relative z-10 p-4 rounded-2xl w-fit mb-6 ${domain.bgLight} ${domain.textColor} transition-transform duration-300 group-hover:scale-110`}>
                     <Icon size={32} strokeWidth={1.5} />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
+                  <h3 className="relative z-10 text-xl font-bold text-slate-900 dark:text-white mb-6">
                     {domain.title}
                   </h3>
                   
-                  <div className="flex-grow overflow-y-auto pr-2 custom-scrollbar space-y-3">
+                  <div className="relative z-10 flex-grow overflow-y-auto pr-2 custom-scrollbar space-y-3">
                     {domain.skills.map((skill, idx) => (
                       <div key={idx} className="flex items-start space-x-3">
                         <div className={`mt-1 flex-shrink-0 w-4 h-4 rounded-full ${domain.bgLight} ${domain.textColor} flex items-center justify-center`}>
                           <Check size={10} strokeWidth={3} />
                         </div>
-                        <span className="text-sm text-slate-600 dark:text-slate-400">
+                        <span className="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">
                           {skill}
                         </span>
                       </div>
@@ -95,7 +102,7 @@ export default function SkillDevelopment() {
                   </div>
                   
                   {/* Fading bottom edge for scrollable area indication */}
-                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none z-10" />
                 </div>
               </motion.div>
             );

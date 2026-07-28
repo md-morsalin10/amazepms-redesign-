@@ -105,14 +105,18 @@ export default function CareersContent() {
                     >
                       <motion.a
                         href={`mailto:careers@amazepms.com?subject=Application for ${job}`}
-                        whileHover={{ x: 8, scale: 1.02 }}
-                        className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800/80 hover:bg-white dark:hover:bg-slate-900 transition-colors group cursor-pointer border-l-4 border-l-transparent hover:border-l-blue-500 hover:shadow-lg dark:hover:shadow-blue-900/10"
+                        whileHover={{ x: 8, scale: 1.015, y: -2 }}
+                        className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-200 dark:border-slate-800/80 transition-all duration-300 group cursor-pointer border-l-4 border-l-transparent hover:border-transparent hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)] relative overflow-hidden"
                       >
-                        <span className="font-semibold text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {/* Glowing Gradient Border Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl -z-10 blur-[2px] m-[-2px]" />
+                        <div className="absolute inset-0 bg-white dark:bg-slate-900 rounded-xl z-0 transition-colors duration-300" />
+
+                        <span className="relative z-10 font-semibold text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                           {job}
                         </span>
-                        <div className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/30 transition-all">
-                          <ArrowRight size={16} />
+                        <div className="relative z-10 p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:text-white group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-all shadow-sm">
+                          <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </motion.a>
                     </motion.div>
@@ -145,12 +149,15 @@ export default function CareersContent() {
                     Join a dynamic, fast-paced environment where your skills are valued, and growth is guaranteed. We provide comprehensive training and benefits.
                   </p>
 
-                  <a 
+                  <motion.a 
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileTap={{ scale: 0.96 }}
                     href="mailto:careers@amazepms.com"
-                    className="w-full py-4 bg-white text-blue-700 font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg"
+                    className="w-full text-center py-4 group relative overflow-hidden bg-gradient-to-r from-white via-blue-50 to-white bg-[length:200%_auto] hover:bg-right text-blue-700 font-bold rounded-xl transition-all duration-500 shadow-lg shadow-white/20 before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-blue-600/10 before:to-transparent before:transition-transform before:duration-700 flex items-center justify-center gap-2"
                   >
-                    Apply Today
-                  </a>
+                    <span className="relative z-10">Apply Today</span>
+                    <ArrowRight size={18} className="relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+                  </motion.a>
                 </div>
               </motion.div>
             </div>

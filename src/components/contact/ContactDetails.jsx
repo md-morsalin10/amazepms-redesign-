@@ -83,13 +83,17 @@ export default function ContactDetails() {
 
               <div className="space-y-8">
                 {/* Location */}
-                <motion.div whileHover={{ x: 6 }} className="flex items-start space-x-5 group">
-                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
+                <motion.div whileHover={{ x: 8, y: -4, scale: 1.015 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="flex items-start space-x-5 group p-4 -ml-4 rounded-2xl relative overflow-hidden border border-transparent hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)]">
+                  {/* Glowing Gradient Border Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl -z-10 blur-[2px] m-[-2px]" />
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white dark:group-hover:bg-slate-900 rounded-2xl z-0 transition-colors duration-300" />
+
+                  <div className="relative z-10 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-blue-600 dark:text-blue-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
                     <MapPin size={28} />
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Location</h4>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">
                       4th floor, High Mark Chambers,<br />
                       Khajaguda X road, Cyberabad,<br />
                       Hyderabad-500008
@@ -100,13 +104,17 @@ export default function ContactDetails() {
                 {/* Phone */}
                 <motion.a 
                   href="tel:9100694137"
-                  whileHover={{ x: 6 }} 
-                  className="flex items-start space-x-5 group cursor-pointer"
+                  whileHover={{ x: 8, y: -4, scale: 1.015 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} 
+                  className="flex items-start space-x-5 group cursor-pointer p-4 -ml-4 rounded-2xl relative overflow-hidden border border-transparent hover:shadow-[0_10px_30px_rgba(16,185,129,0.1)]"
                 >
-                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
+                  {/* Glowing Gradient Border Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-500 to-green-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl -z-10 blur-[2px] m-[-2px]" />
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white dark:group-hover:bg-slate-900 rounded-2xl z-0 transition-colors duration-300" />
+
+                  <div className="relative z-10 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-emerald-600 dark:text-emerald-400 group-hover:scale-110 group-hover:rotate-3 transition-transform">
                     <Phone size={28} />
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Phone</h4>
                     <p className="text-slate-600 dark:text-slate-400 font-medium group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                       +91 9100694137
@@ -117,13 +125,17 @@ export default function ContactDetails() {
                 {/* Email */}
                 <motion.a 
                   href="mailto:Info@amazepms.com"
-                  whileHover={{ x: 6 }} 
-                  className="flex items-start space-x-5 group cursor-pointer"
+                  whileHover={{ x: 8, y: -4, scale: 1.015 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} 
+                  className="flex items-start space-x-5 group cursor-pointer p-4 -ml-4 rounded-2xl relative overflow-hidden border border-transparent hover:shadow-[0_10px_30px_rgba(168,85,247,0.1)]"
                 >
-                  <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
+                  {/* Glowing Gradient Border Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl -z-10 blur-[2px] m-[-2px]" />
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white dark:group-hover:bg-slate-900 rounded-2xl z-0 transition-colors duration-300" />
+
+                  <div className="relative z-10 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:-rotate-3 transition-transform">
                     <Mail size={28} />
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-1">Email</h4>
                     <p className="text-slate-600 dark:text-slate-400 font-medium group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                       Info@amazepms.com

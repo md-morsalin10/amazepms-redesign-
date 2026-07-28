@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 
 export default function RecruitmentsHero() {
   return (
-    <section className="relative w-full h-[450px] flex items-center justify-center bg-slate-900 overflow-hidden">
+    <section className="relative w-full min-h-[50vh] py-16 flex flex-col items-center justify-center bg-slate-900 overflow-hidden">
       {/* Background Image / Overlay */}
       <div className="absolute inset-0 bg-slate-950/70 z-10" />
       <div 

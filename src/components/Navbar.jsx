@@ -15,7 +15,6 @@ const navLinks = [
   { name: 'Our Strength', href: '/our-strength' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'Careers', href: '/careers' },
-  { name: 'Contact Us', href: '/contact' },
 ];
 
 export default function Navbar() {
@@ -26,7 +25,7 @@ export default function Navbar() {
   // Scroll detect korar jonno effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -37,20 +36,26 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 w-full px-4 sm:px-6 lg:px-8 mt-4"
-    >
-      {/* 🔮 Glassmorphic Navbar Container with Enhanced Border & Shadow */}
-      <div
-        className={`max-w-[90rem] mx-auto rounded-full px-5 lg:px-6 py-3.5 flex items-center justify-between min-h-[72px] transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/95 backdrop-blur-xl border border-slate-300/80 shadow-2xl shadow-slate-900/10 dark:bg-slate-900/90 dark:border-slate-700 dark:shadow-slate-950/40'
-            : 'bg-white/85 backdrop-blur-md border border-slate-200/90 shadow-xl shadow-slate-900/5 ring-1 ring-slate-900/5 dark:bg-slate-900/80 dark:border-slate-700/80 dark:shadow-slate-950/20 dark:ring-slate-800'
+    <>
+      {/* Invisible placeholder to prevent layout shift when header becomes fixed */}
+      {isScrolled && <div className="h-[80px] w-full" />}
+      
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`z-50 w-full transition-all duration-500 ease-in-out ${
+          isScrolled ? 'fixed top-4 left-4 right-4 mx-auto max-w-7xl' : 'sticky top-0 left-0 right-0'
         }`}
       >
+        {/* 🔮 Dynamic Glassmorphic Navbar Container */}
+        <div
+          className={`mx-auto flex items-center justify-between min-h-[80px] transition-all duration-500 ease-in-out ${
+            isScrolled
+              ? 'rounded-full px-5 lg:px-6 py-3.5 bg-slate-900/80 dark:bg-slate-950/90 backdrop-blur-xl border border-slate-700/50 shadow-2xl shadow-blue-500/10'
+              : 'w-full max-w-full rounded-none px-6 lg:px-10 py-5 lg:py-6 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 mt-0 mx-0'
+          }`}
+        >
         {/* 1. Logo Section */}
         <div className="flex items-center gap-2 flex-shrink-0">
           <img
@@ -61,7 +66,7 @@ export default function Navbar() {
               e.currentTarget.style.display = 'none';
             }}
           />
-          <h1 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight dark:text-white whitespace-nowrap">
+          <h1 className={`text-xl lg:text-2xl font-black tracking-tight whitespace-nowrap ${isScrolled ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
             AMAZE <span className="text-blue-600 font-light text-lg lg:text-xl">PMSPL</span>
           </h1>
         </div>
@@ -76,8 +81,12 @@ export default function Navbar() {
                 href={link.href}
                 className={`relative px-3 py-1.5 xl:px-3.5 xl:py-2 rounded-full text-xs xl:text-sm font-semibold transition-all duration-300 flex items-center gap-1 whitespace-nowrap ${
                   isActive
-                    ? 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:bg-blue-950/50 dark:border-blue-800'
-                    : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-blue-400 border border-transparent'
+                    ? isScrolled 
+                      ? 'text-blue-400 bg-blue-950/50 border border-blue-800 shadow-sm'
+                      : 'text-blue-600 bg-blue-50 border border-blue-200 shadow-sm dark:bg-blue-950/50 dark:border-blue-800'
+                    : isScrolled
+                      ? 'text-slate-200 hover:text-blue-400 hover:bg-slate-800/80 border border-transparent'
+                      : 'text-slate-700 hover:text-blue-600 hover:bg-slate-100/80 dark:text-slate-200 dark:hover:bg-slate-800/80 dark:hover:text-blue-400 border border-transparent'
                 }`}
               >
                 <span className="whitespace-nowrap">{link.name}</span>
@@ -92,10 +101,10 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-700 px-5 py-2 xl:px-6 xl:py-2.5 text-xs xl:text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-[1.02] whitespace-nowrap"
+              className="group relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-[length:200%_auto] hover:bg-right px-5 py-2 xl:px-6 xl:py-2.5 text-xs xl:text-sm font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-500 hover:scale-[1.04] hover:-translate-y-0.5 whitespace-nowrap before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-transform before:duration-700"
             >
-              <span className="whitespace-nowrap">Contact Us</span>
-              <FiArrowRight className="h-4 w-4" />
+              <span className="relative z-10 whitespace-nowrap">Contact Us</span>
+              <FiArrowRight className="relative z-10 h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-300" />
             </Link>
           </div>
 
@@ -142,10 +151,10 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 font-bold text-white shadow-lg whitespace-nowrap"
+                  className="w-full group relative overflow-hidden flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-[length:200%_auto] hover:bg-right px-6 py-3.5 font-bold text-white shadow-lg shadow-blue-600/30 transition-all duration-500 hover:scale-[1.02] whitespace-nowrap before:absolute before:inset-0 before:-translate-x-full hover:before:translate-x-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:transition-transform before:duration-700"
                 >
-                  <span className="whitespace-nowrap">Contact Us</span>
-                  <FiArrowRight className="h-5 w-5" />
+                  <span className="relative z-10 whitespace-nowrap">Contact Us</span>
+                  <FiArrowRight className="relative z-10 h-5 w-5 group-hover:translate-x-1.5 transition-transform duration-300" />
                 </Link>
               </div>
             </nav>
@@ -153,5 +162,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 }

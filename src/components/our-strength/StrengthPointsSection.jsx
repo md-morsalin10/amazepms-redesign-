@@ -80,16 +80,24 @@ export default function StrengthPointsSection() {
               <motion.div 
                 key={index}
                 variants={itemVariants}
-                whileHover={{ x: 6, scale: 1.01 }}
-                className="flex items-start space-x-4 p-4 rounded-2xl group transition-colors duration-300 hover:bg-slate-50 dark:hover:bg-slate-800/50 border border-transparent hover:border-blue-100 dark:hover:border-blue-900/30"
+                whileHover={{ x: 6, scale: 1.015, y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="flex items-start space-x-4 p-4 rounded-2xl group transition-all duration-300 bg-white/50 dark:bg-slate-800/30 border border-transparent hover:border-transparent shadow-sm hover:shadow-[0_10px_30px_rgba(59,130,246,0.15)] dark:hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)] relative overflow-hidden"
               >
-                <div className="flex-shrink-0 mt-1">
+                {/* Glowing Gradient Border Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl -z-10 blur-[2px] m-[-2px]" />
+                <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900/90 rounded-2xl z-0 transition-colors duration-300" />
+                
+                {/* Hover Inner Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-0" />
+
+                <div className="flex-shrink-0 mt-1 relative z-10">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-blue-400 dark:bg-blue-500 rounded-full blur-md opacity-0 group-hover:opacity-40 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-blue-400 dark:bg-blue-500 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300" />
                     <CheckCircle2 size={24} className="text-blue-600 dark:text-blue-400 relative z-10" />
                   </div>
                 </div>
-                <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                <p className="relative z-10 text-slate-700 dark:text-slate-300 font-medium leading-relaxed group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                   {point}
                 </p>
               </motion.div>
