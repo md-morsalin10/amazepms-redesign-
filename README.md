@@ -12,7 +12,7 @@
   </p>
   
   <p>
-    <a href="#"><strong>Live Demo</strong></a> · <a href="#"><strong>GitHub Repository</strong></a>
+    <a href="https://amaze-pms-redesign-orpin.vercel.app/"><strong>Live Demo</strong></a> · <a href="https://github.com/md-morsalin10/amazepms-redesign-"><strong>GitHub Repository</strong></a>
   </p>
 </div>
 

@@ -16,17 +16,16 @@ import {
 const menuLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Careers', href: '/careers' },
   { name: 'Services', href: '/services-page' },
   { name: 'Our Strength', href: '/our-strength' },
   { name: 'Gallery', href: '/gallery' },
 ];
 
 const quickLinks = [
-  { name: 'Our Clients', href: '#clients' },
-  { name: 'Recruitments', href: '#recruitments' },
-  { name: 'Careers', href: '#careers' },
-  { name: 'Contact Us', href: '#contact' },
+  { name: 'Our Clients', href: '/our-clients' },
+  { name: 'Recruitments', href: '/recruitments' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Contact Us', href: '/contact' },
 ];
 
 const presenceLocations = [
