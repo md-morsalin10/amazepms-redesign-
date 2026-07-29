@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ImageModal from "./ImageModal";
 
-// Using Unsplash placeholders for demonstration
+// Updated with verified working Unsplash image URLs
 const galleryImages = [
   { id: 1, title: "Corporate Office Operations", category: "Facility Management", url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" },
-  { id: 2, title: "Staff Training Session", category: "Training", url: "https://images.unsplash.com/photo-1515169065240-5201c109d7d4?q=80&w=1200&auto=format&fit=crop" },
+  { id: 2, title: "Staff Training Session", category: "Training", url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop" }, // Fixed URL
   { id: 3, title: "Professional Housekeeping", category: "Housekeeping", url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop" },
   { id: 4, title: "Advanced Security Systems", category: "Security", url: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=1200&auto=format&fit=crop" },
   { id: 5, title: "Technical Support & MEP", category: "Technical", url: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },

@@ -14,11 +14,12 @@ import {
 } from 'react-icons/hi2';
 
 const menuLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Our Strength', href: '#strength' },
-  { name: 'Gallery', href: '#gallery' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Careers', href: '/careers' },
+  { name: 'Services', href: '/services-page' },
+  { name: 'Our Strength', href: '/our-strength' },
+  { name: 'Gallery', href: '/gallery' },
 ];
 
 const quickLinks = [

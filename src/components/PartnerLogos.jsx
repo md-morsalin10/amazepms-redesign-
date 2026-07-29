@@ -21,28 +21,30 @@ export default function PartnerLogos() {
       {/* Section Title */}
       <div className="max-w-7xl mx-auto px-6 mb-8 text-center sm:text-left">
         <p className="text-sm font-semibold tracking-wider text-slate-500 uppercase dark:text-slate-400">
-          Trusted by <span className="text-blue-600 font-bold">200+</span> valued partners around India
+          Trusted by <span className="text-blue-600 font-bold dark:text-blue-400">200+</span> valued partners around India
         </p>
       </div>
 
-      {/* Pure White Gradient Marquee */}
+      {/* 🔮 Dynamic Gradient Overlays (Supports Light & Dark theme) */}
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 sm:w-28 bg-gradient-to-r from-white dark:from-slate-900 to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 sm:w-28 bg-gradient-to-l from-white dark:from-slate-900 to-transparent" />
+
+      {/* Marquee Component */}
       <Marquee
-        gradient={true}
-        gradientColor="rgb(255, 255, 255)"
-        gradientWidth={80}
+        gradient={false}
         speed={45}
         pauseOnHover={true}
       >
-        <div className="flex items-center gap-10 sm:gap-14 pr-10 sm:pr-14">
+        <div className="flex items-center gap-6 sm:gap-8 pr-6 sm:pr-8">
           {partnerLogos.map((partner) => (
             <div
               key={partner.id}
-              className="group flex items-center justify-center p-4 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer min-w-[140px] dark:bg-slate-800 dark:border-slate-700"
+              className="group flex items-center justify-center p-3 sm:p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer min-w-[130px] sm:min-w-[150px] dark:bg-slate-800/80 dark:border-slate-700/80"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-10 sm:h-12 w-auto object-contain max-w-[140px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                className="h-9 sm:h-11 w-auto object-contain max-w-[120px] sm:max-w-[140px] opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
               />
             </div>
           ))}

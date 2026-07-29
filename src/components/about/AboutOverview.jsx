@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, BadgeCheck, MapPinned, Users } from 'lucide-react';
+import Link from 'next/link';
 
 const stats = [
   { icon: Users, label: 'Strong 15000+ Work Force' },
@@ -10,7 +11,7 @@ const stats = [
   { icon: MapPinned, label: 'Presence PAN INDIA' },
 ];
 
-// Animation Variants for Left (Fade In Right) & Right (Fade In Left)
+// Animation Variants for Left & Right
 const fadeInLeftVariants = {
   hidden: { opacity: 0, x: -50 },
   visible: {
@@ -18,7 +19,7 @@ const fadeInLeftVariants = {
     x: 0,
     transition: {
       duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1], // Smooth cubic-bezier
+      ease: [0.25, 0.1, 0.25, 1],
     },
   },
 };
@@ -40,7 +41,7 @@ export default function AboutOverview() {
     <section className="bg-white py-20 sm:py-24 overflow-hidden dark:bg-slate-950">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:px-12 items-center">
         
-        {/* Left Side: Fade In from Left */}
+        {/* Left Side: Content */}
         <motion.div
           variants={fadeInLeftVariants}
           initial="hidden"
@@ -79,28 +80,34 @@ export default function AboutOverview() {
             ))}
           </div>
 
-          {/* CTA Button Animation */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <motion.a
+            <Link
               href="/#contact"
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-3 rounded-full bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700"
+              className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full border-2 border-blue-600 pl-6 pr-2 py-2 active:scale-95 transition-transform duration-150"
             >
-              <span>GET STARTED WITH US</span>
-              <span className="rounded-full bg-white/15 p-2">
-                <ArrowRight className="h-4 w-4" />
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 bg-blue-600 translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out rounded-full"
+              />
+
+              <span className="relative z-10 whitespace-nowrap text-sm font-bold tracking-wide text-blue-600 group-hover:text-white transition-colors duration-300">
+                GET STARTED WITH US
               </span>
-            </motion.a>
+
+              <span className="relative z-10 flex items-center justify-center h-10 w-10 rounded-full bg-blue-600 shadow-md flex-shrink-0">
+                <ArrowRight className="h-4 w-4 text-white transition-transform duration-300 group-hover:translate-x-1" />
+              </span>
+            </Link>
           </motion.div>
         </motion.div>
 
-        {/* Right Side: Fade In from Right */}
+        {/* Right Side: Fixed Image Layering */}
         <motion.div
           variants={fadeInRightVariants}
           initial="hidden"
@@ -109,37 +116,37 @@ export default function AboutOverview() {
           className="relative mx-auto w-full max-w-xl"
         >
           <div className="relative h-115">
-            {/* Top Back Card */}
+            {/* Back Layer (Bottom Right): Action Group Shield Logo - Full Width Fixed */}
             <motion.div 
               initial={{ scale: 0.95, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="absolute left-0 top-10 w-[72%] rounded-4xl bg-slate-900 p-4 shadow-2xl"
+              className="absolute right-0 top-0 w-[78%] overflow-hidden rounded-3xl bg-slate-900 shadow-2xl z-0 border border-slate-800"
             >
               <Image
-                src="https://www.amazepms.com/assets/about-ag.jpg"
+                src="https://www.amazepms.com/assets/aboutimgmobile.png"
                 alt="Action Group shield logo"
                 width={900}
                 height={700}
-                className="h-72 w-full rounded-[1.4rem] object-contain bg-white/10 p-3"
+                className="h-80 w-full object-cover"
               />
             </motion.div>
 
-            {/* Bottom Floating Front Card */}
+            {/* Front Layer (Top Left): Amaze Team Photo */}
             <motion.div 
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute bottom-0 right-0 w-[72%] rounded-4xl border border-slate-200 bg-white p-3 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="absolute bottom-2 left-0 w-[72%] z-10 rounded-3xl border-2 border-white bg-white p-2.5 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
             >
               <Image
-                src="https://www.amazepms.com/assets/about-team.jpg"
-                alt="Amaze team"
+                src="https://www.amazepms.com/assets/about1.png"
+                alt="Amaze team group photo"
                 width={900}
                 height={700}
-                className="h-72 w-full rounded-[1.4rem] object-cover"
+                className="h-64 w-full rounded-2xl object-cover"
               />
             </motion.div>
 
