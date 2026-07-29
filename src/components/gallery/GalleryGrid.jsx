@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { HiOutlineEye } from "react-icons/hi2";
 import ImageModal from "./ImageModal";
 
 // Updated with verified working Unsplash image URLs
 const galleryImages = [
   { id: 1, title: "Corporate Office Operations", category: "Facility Management", url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop" },
-  { id: 2, title: "Staff Training Session", category: "Training", url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop" }, // Fixed URL
+  { id: 2, title: "Staff Training Session", category: "Training", url: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop" },
   { id: 3, title: "Professional Housekeeping", category: "Housekeeping", url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop" },
   { id: 4, title: "Advanced Security Systems", category: "Security", url: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?q=80&w=1200&auto=format&fit=crop" },
   { id: 5, title: "Technical Support & MEP", category: "Technical", url: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200&auto=format&fit=crop" },
@@ -47,18 +48,36 @@ export default function GalleryGrid() {
                 className="group relative cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <div className="relative overflow-hidden rounded-2xl aspect-square bg-slate-200 dark:bg-slate-800 shadow-sm group-hover:shadow-xl dark:shadow-none border border-slate-200/50 dark:border-slate-800/50 group-hover:border-blue-400/50 dark:group-hover:border-blue-500/50 transition-all duration-300">
-                  <motion.img 
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                {/* Main Card Container with Floating & Glow Hover */}
+                <div className="relative overflow-hidden rounded-2xl aspect-square bg-slate-200 dark:bg-slate-800 shadow-sm transition-all duration-500 ease-out transform group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-blue-500/20 border border-slate-200/60 dark:border-slate-800/60 group-hover:border-blue-500/50 dark:group-hover:border-blue-400/50">
+                  
+                  {/* Image Zoom Effect */}
+                  <img 
                     src={image.url}
                     alt={image.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                    <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">{image.category}</span>
-                    <h3 className="text-white font-medium line-clamp-2">{image.title}</h3>
+
+                  {/* Dark Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-5">
+                    
+                    {/* Top Right Zoom Icon Indicator */}
+                    <div className="self-end translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 delay-75">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 shadow-lg">
+                        <HiOutlineEye className="w-5 h-5" />
+                      </span>
+                    </div>
+
+                    {/* Bottom Animated Text Content */}
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 ease-out">
+                      <span className="inline-block text-xs font-bold text-blue-400 uppercase tracking-wider mb-1 px-2.5 py-1 rounded-md bg-blue-500/10 backdrop-blur-sm border border-blue-500/20">
+                        {image.category}
+                      </span>
+                      <h3 className="text-white font-semibold text-lg leading-snug line-clamp-2 mt-1 drop-shadow-sm">
+                        {image.title}
+                      </h3>
+                    </div>
+
                   </div>
                 </div>
               </motion.div>
